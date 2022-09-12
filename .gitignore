@@ -17,3 +17,8 @@ test/version_tmp
 tmp
 .ruby-version
 .ruby-gemset
+.byebug*
+tags
+tags.*
+*.swp
+*.old

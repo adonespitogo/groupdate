@@ -4,178 +4,178 @@ class DayStartTest < Minitest::Test
   # day hour starts at 2 am
 
   def test_day_end_of_day
-    assert_result_date :day, "2013-05-03", "2013-05-04 01:59:59", false, day_start: 2
+    assert_result_date :day, "2013-05-03", "2013-05-04 01:59:59", day_start: 2
   end
 
   def test_day_start_of_day
-    assert_result_date :day, "2013-05-03", "2013-05-03 02:00:00", false, day_start: 2
+    assert_result_date :day, "2013-05-03", "2013-05-03 02:00:00", day_start: 2
   end
 
   def test_day_end_of_day_with_time_zone
-    assert_result_date :day, "2013-05-03", "2013-05-04 07:59:59", true, day_start: 2
+    assert_result_date :day, "2013-05-03", "2013-05-04 07:59:59", day_start: 2, time_zone: TZ_US_CANADA
   end
 
   def test_day_start_of_day_with_time_zone
-    assert_result_date :day, "2013-05-03", "2013-05-03 09:00:00", true, day_start: 2
+    assert_result_date :day, "2013-05-03", "2013-05-03 09:00:00", day_start: 2, time_zone: TZ_US_CANADA
   end
 
   # week starting at 2am
 
   def test_week_end_of_week
-    assert_result_date :week, "2013-03-17", "2013-03-24 01:59:59", false, day_start: 2
+    assert_result_date :week, "2013-03-17", "2013-03-24 01:59:59", day_start: 2
   end
 
   def test_week_start_of_week
-    assert_result_date :week, "2013-03-17", "2013-03-17 02:00:00", false, day_start: 2
+    assert_result_date :week, "2013-03-17", "2013-03-17 02:00:00", day_start: 2
   end
 
   def test_week_end_of_week_with_time_zone
-    assert_result_date :week, "2013-03-17", "2013-03-24 08:59:59", true, day_start: 2
+    assert_result_date :week, "2013-03-17", "2013-03-24 08:59:59", day_start: 2, time_zone: TZ_US_CANADA
   end
 
   def test_week_start_of_week_with_time_zone
-    assert_result_date :week, "2013-03-17", "2013-03-17 09:00:00", true, day_start: 2
+    assert_result_date :week, "2013-03-17", "2013-03-17 09:00:00", day_start: 2, time_zone: TZ_US_CANADA
   end
 
   # month starts at 2am
 
   def test_month_end_of_month
-    assert_result_date :month, "2013-03-01", "2013-04-01 01:59:59", false, day_start: 2
+    assert_result_date :month, "2013-03-01", "2013-04-01 01:59:59", day_start: 2
   end
 
   def test_month_start_of_month
-    assert_result_date :month, "2013-03-01", "2013-03-01 02:00:00", false, day_start: 2
+    assert_result_date :month, "2013-03-01", "2013-03-01 02:00:00", day_start: 2
   end
 
   def test_month_end_of_month_with_time_zone
-    assert_result_date :month, "2013-03-01", "2013-04-01 08:59:59", true, day_start: 2
+    assert_result_date :month, "2013-03-01", "2013-04-01 08:59:59", day_start: 2, time_zone: TZ_US_CANADA
   end
 
   def test_month_start_of_month_with_time_zone
-    assert_result_date :month, "2013-03-01", "2013-03-01 10:00:00", true, day_start: 2
+    assert_result_date :month, "2013-03-01", "2013-03-01 10:00:00", day_start: 2, time_zone: TZ_US_CANADA
   end
 
   # quarter starts at 2am
 
   def test_quarter_end_of_quarter
-    assert_result_date :quarter, "2013-04-01", "2013-07-01 01:59:59", false, day_start: 2
+    assert_result_date :quarter, "2013-04-01", "2013-07-01 01:59:59", day_start: 2
   end
 
   def test_quarter_start_of_quarter
-    assert_result_date :quarter, "2013-04-01", "2013-04-01 02:00:00", false, day_start: 2
+    assert_result_date :quarter, "2013-04-01", "2013-04-01 02:00:00", day_start: 2
   end
 
   def test_quarter_end_of_quarter_with_time_zone
-    assert_result_date :quarter, "2013-01-01", "2013-04-01 08:59:59", true, day_start: 2
+    assert_result_date :quarter, "2013-01-01", "2013-04-01 08:59:59", day_start: 2, time_zone: TZ_US_CANADA
   end
 
   def test_quarter_start_of_quarter_with_time_zone
-    assert_result_date :quarter, "2013-01-01", "2013-01-01 10:00:00", true, day_start: 2
+    assert_result_date :quarter, "2013-01-01", "2013-01-01 10:00:00", day_start: 2, time_zone: TZ_US_CANADA
   end
 
   # year starts at 2am
 
   def test_year_end_of_year
-    assert_result_date :year, "2013-01-01", "2014-01-01 01:59:59", false, day_start: 2
+    assert_result_date :year, "2013-01-01", "2014-01-01 01:59:59", day_start: 2
   end
 
   def test_year_start_of_year
-    assert_result_date :year, "2013-01-01", "2013-01-01 02:00:00", false, day_start: 2
+    assert_result_date :year, "2013-01-01", "2013-01-01 02:00:00", day_start: 2
   end
 
   def test_year_end_of_year_with_time_zone
-    assert_result_date :year, "2013-01-01", "2014-01-01 09:59:59", true, day_start: 2
+    assert_result_date :year, "2013-01-01", "2014-01-01 09:59:59", day_start: 2, time_zone: TZ_US_CANADA
   end
 
   def test_year_start_of_year_with_time_zone
-    assert_result_date :year, "2013-01-01", "2013-01-01 10:00:00", true, day_start: 2
+    assert_result_date :year, "2013-01-01", "2013-01-01 10:00:00", day_start: 2, time_zone: TZ_US_CANADA
   end
 
   # hour of day starts at 2am
 
   def test_hour_of_day_end_of_day
-    assert_result :hour_of_day, 23, "2013-01-01 01:59:59", false, day_start: 2
+    assert_result :hour_of_day, 23, "2013-01-01 01:59:59", day_start: 2
   end
 
   def test_hour_of_day_start_of_day
-    assert_result :hour_of_day, 0, "2013-01-01 02:00:00", false, day_start: 2
+    assert_result :hour_of_day, 0, "2013-01-01 02:00:00", day_start: 2
   end
 
   def test_hour_of_day_end_of_day_with_time_zone
-    assert_result :hour_of_day, 23, "2013-01-01 09:59:59", true, day_start: 2
+    assert_result :hour_of_day, 23, "2013-01-01 09:59:59", day_start: 2, time_zone: TZ_US_CANADA
   end
 
   def test_hour_of_day_start_of_day_with_time_zone
-    assert_result :hour_of_day, 0, "2013-01-01 10:00:00", true, day_start: 2
+    assert_result :hour_of_day, 0, "2013-01-01 10:00:00", day_start: 2, time_zone: TZ_US_CANADA
   end
 
   # day of week starts at 2am
 
   def test_day_of_week_end_of_day
-    assert_result :day_of_week, 3, "2013-01-03 01:59:59", false, day_start: 2
+    assert_result :day_of_week, 3, "2013-01-03 01:59:59", day_start: 2
   end
 
   def test_day_of_week_start_of_day
-    assert_result :day_of_week, 3, "2013-01-02 02:00:00", false, day_start: 2
+    assert_result :day_of_week, 3, "2013-01-02 02:00:00", day_start: 2
   end
 
   def test_day_of_week_end_of_day_with_time_zone
-    assert_result :day_of_week, 3, "2013-01-03 09:59:59", true, day_start: 2
+    assert_result :day_of_week, 3, "2013-01-03 09:59:59", day_start: 2, time_zone: TZ_US_CANADA
   end
 
   def test_day_of_week_start_of_day_with_time_zone
-    assert_result :day_of_week, 3, "2013-01-02 10:00:00", true, day_start: 2
+    assert_result :day_of_week, 3, "2013-01-02 10:00:00", day_start: 2, time_zone: TZ_US_CANADA
   end
 
   # day of month starts at 2am
 
   def test_day_of_month_end_of_day
-    assert_result :day_of_month, 31, "2013-01-01 01:59:59", false, day_start: 2
+    assert_result :day_of_month, 31, "2013-01-01 01:59:59", day_start: 2
   end
 
   def test_day_of_month_start_of_day
-    assert_result :day_of_month, 1, "2013-01-01 02:00:00", false, day_start: 2
+    assert_result :day_of_month, 1, "2013-01-01 02:00:00", day_start: 2
   end
 
   def test_day_of_month_end_of_day_with_time_zone
-    assert_result :day_of_month, 31, "2013-01-01 09:59:59", true, day_start: 2
+    assert_result :day_of_month, 31, "2013-01-01 09:59:59", day_start: 2, time_zone: TZ_US_CANADA
   end
 
   def test_day_of_month_start_of_day_with_time_zone
-    assert_result :day_of_month, 1, "2013-01-01 10:00:00", true, day_start: 2
+    assert_result :day_of_month, 1, "2013-01-01 10:00:00", day_start: 2, time_zone: TZ_US_CANADA
   end
 
   # month of year starts at 2am
 
   def test_month_of_year_end_of_month
-    assert_result :month_of_year, 12, "2013-01-01 01:59:59", false, day_start: 2
+    assert_result :month_of_year, 12, "2013-01-01 01:59:59", day_start: 2
   end
 
   def test_month_of_year_start_of_month
-    assert_result :month_of_year, 1, "2013-01-01 02:00:00", false, day_start: 2
+    assert_result :month_of_year, 1, "2013-01-01 02:00:00", day_start: 2
   end
 
   def test_month_of_year_end_of_month_with_time_zone
-    assert_result :month_of_year, 12, "2013-01-01 09:59:59", true, day_start: 2
+    assert_result :month_of_year, 12, "2013-01-01 09:59:59", day_start: 2, time_zone: TZ_US_CANADA
   end
 
   def test_month_of_year_start_of_month_with_time_zone
-    assert_result :month_of_year, 1, "2013-01-01 10:00:00", true, day_start: 2
+    assert_result :month_of_year, 1, "2013-01-01 10:00:00", day_start: 2, time_zone: TZ_US_CANADA
   end
 
   # decimal
 
   def test_decimal_end_of_day
-    assert_result_date :day, "2013-05-03", "2013-05-04 02:29:59", false, day_start: 2.5
+    assert_result_date :day, "2013-05-03", "2013-05-04 02:29:59", day_start: 2.5
   end
 
   def test_decimal_start_of_day
-    assert_result_date :day, "2013-05-03", "2013-05-03 02:30:00", false, day_start: 2.5
+    assert_result_date :day, "2013-05-03", "2013-05-03 02:30:00", day_start: 2.5
   end
 
   def test_decimal_hour_of_day
     skip if sqlite?
-    assert_result :hour_of_day, 23, "2013-05-04 02:29:59", false, day_start: 2.5
+    assert_result :hour_of_day, 23, "2013-05-04 02:29:59", day_start: 2.5
   end
 
   # invalid
@@ -211,31 +211,31 @@ class DayStartTest < Minitest::Test
 
   def test_dst_day_spring
     time = pt.parse("2013-03-10 03:00:00")
-    assert_result_date :day, "2013-03-10", time, true, day_start: 3
+    assert_result_date :day, "2013-03-10", time, day_start: 3, time_zone: TZ_US_CANADA
   end
 
   def test_dst_day_fall
     time = pt.parse("2013-11-03 01:00:00") + 1.hour # second 1 am of the day
-    assert_result_date :day, "2013-11-03", time, true, day_start: 1
+    assert_result_date :day, "2013-11-03", time, day_start: 1, time_zone: TZ_US_CANADA
   end
 
   def test_dst_week_spring
     time = pt.parse("2013-03-10 03:00:00")
-    assert_result_date :week, "2013-03-10", time, true, day_start: 3
+    assert_result_date :week, "2013-03-10", time, day_start: 3, time_zone: TZ_US_CANADA
   end
 
   def test_dst_week_fall
     time = pt.parse("2013-11-03 01:00:00") + 1.hour # second 1 am of the day
-    assert_result_date :week, "2013-11-03", time, true, day_start: 1
+    assert_result_date :week, "2013-11-03", time, day_start: 1, time_zone: TZ_US_CANADA
   end
 
   def test_dst_hour_of_day_spring
     time = pt.parse("2013-03-10 03:00:00")
-    assert_result :hour_of_day, 0, time, true, day_start: 3
+    assert_result :hour_of_day, 0, time, day_start: 3, time_zone: TZ_US_CANADA
   end
 
   def test_dst_hour_of_day_fall
     time = pt.parse("2013-11-03 01:00:00") + 1.hour # second 1 am of the day
-    assert_result :hour_of_day, 0, time, true, day_start: 1
+    assert_result :hour_of_day, 0, time, day_start: 1, time_zone: TZ_US_CANADA
   end
 end

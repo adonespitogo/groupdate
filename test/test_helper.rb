@@ -6,6 +6,8 @@ require "logger"
 require "active_record"
 require "ostruct"
 
+require "byebug"
+
 ENV["TZ"] = "UTC"
 
 adapter = ENV["ADAPTER"]
@@ -26,6 +28,10 @@ time: {
 }
 
 class Minitest::Test
+
+  TZ_US_CANADA = "Pacific Time (US & Canada)"
+  TZ_TRANSFORM = "Asia/Manila"
+
   def setup
     if enumerable?
       @users = []
@@ -102,44 +108,46 @@ class Minitest::Test
     end
   end
 
-  def assert_result_time(method, expected, time_str, time_zone = false, **options)
-    expected = {utc.parse(expected).in_time_zone(time_zone ? "Pacific Time (US & Canada)" : utc) => 1}
-    assert_equal expected, result(method, time_str, time_zone, :created_at, options)
+  def assert_result_time(method, expected_str, time_str, **options)
+    tz = options[:time_zone] ? TZ_US_CANADA : utc
+    expected_time = expected_str.is_a?(Time) ? expected_str : utc.parse(expected_str).in_time_zone(tz)
+    expected = {expected_time => 1}
+    assert_equal expected, result(method, time_str, :created_at, options)
 
     if postgresql?
       # test timestamptz
-      assert_equal expected, result(method, time_str, time_zone, :deleted_at, options)
+      assert_equal expected, result(method, time_str, :deleted_at, options)
     end
   end
 
-  def assert_result_date(method, expected_str, time_str, time_zone = false, options = {})
+  def assert_result_date(method, expected_date, time_str, options = {})
     create_user time_str
-    expected = {Date.parse(expected_str) => 1}
-    assert_equal expected, call_method(method, :created_at, options.merge(time_zone: time_zone ? "Pacific Time (US & Canada)" : nil))
+    expected = {Date.parse(expected_date) => 1}
+    assert_equal expected, call_method(method, :created_at, options)
 
-    expected_time = (time_zone ? pt : utc).parse(expected_str)
+    expected_time = pt(options[:time_zone] || 'UTC').parse(expected_date)
     if options[:day_start]
       expected_time = expected_time.change(hour: options[:day_start], min: (options[:day_start] % 1) * 60)
     end
     expected = {expected_time => 1}
 
-    # assert_equal expected, call_method(method, :created_on, options.merge(time_zone: time_zone ? "Pacific Time (US & Canada)" : nil))
+    # assert_equal expected, call_method(method, :created_on, options.merge(time_zone: time_zone ? TZ_US_CANADA : nil))
   end
 
-  def assert_result(method, expected, time_str, time_zone = false, options = {})
-    assert_equal 1, result(method, time_str, time_zone, :created_at, options)[expected]
+  def assert_result(method, expected, time_str, options = {})
+    assert_equal 1, result(method, time_str, :created_at, options)[expected]
   end
 
-  def result(method, time_str, time_zone = false, attribute = :created_at, options = {})
+  def result(method, time_str, attribute = :created_at, options = {})
     create_user time_str unless attribute == :deleted_at
-    call_method(method, attribute, options.merge(time_zone: time_zone ? "Pacific Time (US & Canada)" : nil))
+    call_method(method, attribute, options)
   end
 
   def utc
     ActiveSupport::TimeZone["UTC"]
   end
 
-  def pt
-    ActiveSupport::TimeZone["Pacific Time (US & Canada)"]
+  def pt(tz = TZ_US_CANADA)
+    ActiveSupport::TimeZone[tz]
   end
 end

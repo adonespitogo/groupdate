@@ -58,11 +58,11 @@ class BasicTest < Minitest::Test
   end
 
   def test_day_end_of_day_with_time_zone
-    assert_result_date :day, "2013-05-02", "2013-05-03 06:59:59", true
+    assert_result_date :day, "2013-05-02", "2013-05-03 06:59:59", time_zone: TZ_US_CANADA
   end
 
   def test_day_start_of_day_with_time_zone
-    assert_result_date :day, "2013-05-03", "2013-05-03 07:00:00", true
+    assert_result_date :day, "2013-05-03", "2013-05-03 07:00:00", time_zone: TZ_US_CANADA
   end
 
   # week
@@ -76,11 +76,11 @@ class BasicTest < Minitest::Test
   end
 
   def test_week_end_of_week_with_time_zone
-    assert_result_date :week, "2013-03-10", "2013-03-17 06:59:59", true
+    assert_result_date :week, "2013-03-10", "2013-03-17 06:59:59", time_zone: TZ_US_CANADA
   end
 
   def test_week_start_of_week_with_time_zone
-    assert_result_date :week, "2013-03-17", "2013-03-17 07:00:00", true
+    assert_result_date :week, "2013-03-17", "2013-03-17 07:00:00", time_zone: TZ_US_CANADA
   end
 
   # month
@@ -94,11 +94,11 @@ class BasicTest < Minitest::Test
   end
 
   def test_month_end_of_month_with_time_zone
-    assert_result_date :month, "2013-05-01", "2013-06-01 06:59:59", true
+    assert_result_date :month, "2013-05-01", "2013-06-01 06:59:59", time_zone: TZ_US_CANADA
   end
 
   def test_month_start_of_month_with_time_zone
-    assert_result_date :month, "2013-06-01", "2013-06-01 07:00:00", true
+    assert_result_date :month, "2013-06-01", "2013-06-01 07:00:00", time_zone: TZ_US_CANADA
   end
 
   # quarter
@@ -112,11 +112,11 @@ class BasicTest < Minitest::Test
   end
 
   def test_quarter_end_of_quarter_with_time_zone
-    assert_result_date :quarter, "2013-04-01", "2013-07-01 06:59:59", true
+    assert_result_date :quarter, "2013-04-01", "2013-07-01 06:59:59", time_zone: TZ_US_CANADA
   end
 
   def test_quarter_start_of_quarter_with_time_zone
-    assert_result_date :quarter, "2013-04-01", "2013-04-01 07:00:00", true
+    assert_result_date :quarter, "2013-04-01", "2013-04-01 07:00:00", time_zone: TZ_US_CANADA
   end
 
   # year
@@ -130,11 +130,11 @@ class BasicTest < Minitest::Test
   end
 
   def test_year_end_of_year_with_time_zone
-    assert_result_date :year, "2013-01-01", "2014-01-01 07:59:59", true
+    assert_result_date :year, "2013-01-01", "2014-01-01 07:59:59", time_zone: TZ_US_CANADA
   end
 
   def test_year_start_of_year_with_time_zone
-    assert_result_date :year, "2014-01-01", "2014-01-01 08:00:00", true
+    assert_result_date :year, "2014-01-01", "2014-01-01 08:00:00", time_zone: TZ_US_CANADA
   end
 
   # minute of hour
@@ -158,11 +158,11 @@ class BasicTest < Minitest::Test
   end
 
   def test_hour_of_day_end_of_hour_with_time_zone
-    assert_result :hour_of_day, 0, "2013-01-01 08:59:59", true
+    assert_result :hour_of_day, 0, "2013-01-01 08:59:59", time_zone: TZ_US_CANADA
   end
 
   def test_hour_of_day_start_of_hour_with_time_zone
-    assert_result :hour_of_day, 1, "2013-01-01 09:00:00", true
+    assert_result :hour_of_day, 1, "2013-01-01 09:00:00", time_zone: TZ_US_CANADA
   end
 
   # day of week
@@ -176,11 +176,11 @@ class BasicTest < Minitest::Test
   end
 
   def test_day_of_week_end_of_week_with_time_zone
-    assert_result :day_of_week, 2, "2013-01-02 07:59:59", true
+    assert_result :day_of_week, 2, "2013-01-02 07:59:59", time_zone: TZ_US_CANADA
   end
 
   def test_day_of_week_start_of_week_with_time_zone
-    assert_result :day_of_week, 3, "2013-01-02 08:00:00", true
+    assert_result :day_of_week, 3, "2013-01-02 08:00:00", time_zone: TZ_US_CANADA
   end
 
   # day of month
@@ -198,11 +198,11 @@ class BasicTest < Minitest::Test
   end
 
   def test_day_of_month_end_of_day_with_time_zone
-    assert_result :day_of_month, 31, "2013-02-01 07:59:59", true
+    assert_result :day_of_month, 31, "2013-02-01 07:59:59", time_zone: TZ_US_CANADA
   end
 
   def test_day_of_month_start_of_day_with_time_zone
-    assert_result :day_of_month, 1, "2013-01-01 08:00:00", true
+    assert_result :day_of_month, 1, "2013-01-01 08:00:00", time_zone: TZ_US_CANADA
   end
 
   # day of year
@@ -216,11 +216,11 @@ class BasicTest < Minitest::Test
   end
 
   def test_day_of_year_end_of_week_with_time_zone
-    assert_result :day_of_year, 1, "2013-01-02 07:59:59", true
+    assert_result :day_of_year, 1, "2013-01-02 07:59:59", time_zone: TZ_US_CANADA
   end
 
   def test_day_of_year_start_of_week_with_time_zone
-    assert_result :day_of_year, 2, "2013-01-02 08:00:00", true
+    assert_result :day_of_year, 2, "2013-01-02 08:00:00", time_zone: TZ_US_CANADA
   end
 
   # month of year
@@ -234,11 +234,11 @@ class BasicTest < Minitest::Test
   end
 
   def test_month_of_year_end_of_month_with_time_zone
-    assert_result :month_of_year, 1, "2013-02-01 07:59:59", true
+    assert_result :month_of_year, 1, "2013-02-01 07:59:59", time_zone: TZ_US_CANADA
   end
 
   def test_month_of_year_start_of_month_with_time_zone
-    assert_result :month_of_year, 1, "2013-01-01 08:00:00", true
+    assert_result :month_of_year, 1, "2013-01-01 08:00:00", time_zone: TZ_US_CANADA
   end
 
   # misc
@@ -266,14 +266,14 @@ class BasicTest < Minitest::Test
     expected = {
       Date.parse("2013-05-03") => 1
     }
-    assert_equal expected, result(:day, "2013-05-03", false, :created_on)
+    assert_equal expected, result(:day, "2013-05-03", :created_on)
   end
 
   def test_date_column_with_time_zone
     expected = {
       Date.parse("2013-05-02") => 1
     }
-    assert_equal expected, result(:day, "2013-05-03", true, :created_on)
+    assert_equal expected, result(:day, "2013-05-03", :created_on, time_zone: TZ_US_CANADA)
   end
 
   def test_date_column_with_time_zone_false
@@ -334,7 +334,7 @@ class BasicTest < Minitest::Test
   # extra tests for week
 
   def test_week_middle_of_week_with_time_zone
-    assert_result_date :week, "2013-03-10", "2013-03-11 07:15:00", true
+    assert_result_date :week, "2013-03-10", "2013-03-11 07:15:00", time_zone: TZ_US_CANADA
   end
 
   def test_week_middle_of_week_with_time_zone_frequently
@@ -357,7 +357,7 @@ class BasicTest < Minitest::Test
           while time < end_at
             # prevent mysql error
             if time.utc.to_s != "2013-03-10 02:00:00 UTC"
-              assert_result_date :week, start_at.to_date.to_s, time, true, day_start: hour, week_start: week_start
+              assert_result_date :week, start_at.to_date.to_s, time, day_start: hour, week_start: week_start, time_zone: TZ_US_CANADA
               if enumerable?
                 @users = []
               else
